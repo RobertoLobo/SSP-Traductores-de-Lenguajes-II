@@ -12,3 +12,48 @@ G:\Otros ordenadores\Mi PC\Documents\Proyectos\SSP Traductores II\MiniAnalizador
 G:\Otros ordenadores\Mi PC\Documents\Proyectos\SSP Traductores II\MiniAnalizadorLexico\bin\Debug\net8.0\MiniAnalizadorLexico.pdb
 G:\Otros ordenadores\Mi PC\Documents\Proyectos\SSP Traductores II\MiniAnalizadorLexico\obj\Debug\net8.0\MiniAnalizadorLexico.genruntimeconfig.cache
 G:\Otros ordenadores\Mi PC\Documents\Proyectos\SSP Traductores II\MiniAnalizadorLexico\obj\Debug\net8.0\ref\MiniAnalizadorLexico.dll
+G:\Otros ordenadores\Mi PC\Documents\Proyectos\SSP Traductores II\SSP-Traductores-de-Lenguajes-II\MiniAnalizadorLexico\bin\Debug\net8.0\MiniAnalizadorLexico.exe
+G:\Otros ordenadores\Mi PC\Documents\Proyectos\SSP Traductores II\SSP-Traductores-de-Lenguajes-II\MiniAnalizadorLexico\bin\Debug\net8.0\MiniAnalizadorLexico.deps.json
+G:\Otros ordenadores\Mi PC\Documents\Proyectos\SSP Traductores II\SSP-Traductores-de-Lenguajes-II\MiniAnalizadorLexico\bin\Debug\net8.0\MiniAnalizadorLexico.runtimeconfig.json
+G:\Otros ordenadores\Mi PC\Documents\Proyectos\SSP Traductores II\SSP-Traductores-de-Lenguajes-II\MiniAnalizadorLexico\bin\Debug\net8.0\MiniAnalizadorLexico.dll
+G:\Otros ordenadores\Mi PC\Documents\Proyectos\SSP Traductores II\SSP-Traductores-de-Lenguajes-II\MiniAnalizadorLexico\bin\Debug\net8.0\MiniAnalizadorLexico.pdb
+G:\Otros ordenadores\Mi PC\Documents\Proyectos\SSP Traductores II\SSP-Traductores-de-Lenguajes-II\MiniAnalizadorLexico\obj\Debug\net8.0\MiniAnalizadorLexico.GeneratedMSBuildEditorConfig.editorconfig
+G:\Otros ordenadores\Mi PC\Documents\Proyectos\SSP Traductores II\SSP-Traductores-de-Lenguajes-II\MiniAnalizadorLexico\obj\Debug\net8.0\MiniAnalizadorLexico.AssemblyInfoInputs.cache
+G:\Otros ordenadores\Mi PC\Documents\Proyectos\SSP Traductores II\SSP-Traductores-de-Lenguajes-II\MiniAnalizadorLexico\obj\Debug\net8.0\MiniAnalizadorLexico.AssemblyInfo.cs
+G:\Otros ordenadores\Mi PC\Documents\Proyectos\SSP Traductores II\SSP-Traductores-de-Lenguajes-II\MiniAnalizadorLexico\obj\Debug\net8.0\MiniAnalizadorLexico.csproj.CoreCompileInputs.cache
+G:\Otros ordenadores\Mi PC\Documents\Proyectos\SSP Traductores II\SSP-Traductores-de-Lenguajes-II\MiniAnalizadorLexico\obj\Debug\net8.0\MiniAnalizadorLexico.sourcelink.json
+G:\Otros ordenadores\Mi PC\Documents\Proyectos\SSP Traductores II\SSP-Traductores-de-Lenguajes-II\MiniAnalizadorLexico\obj\Debug\net8.0\MiniAnalizadorLexico.dll
+G:\Otros ordenadores\Mi PC\Documents\Proyectos\SSP Traductores II\SSP-Traductores-de-Lenguajes-II\MiniAnalizadorLexico\obj\Debug\net8.0\refint\MiniAnalizadorLexico.dll
+G:\Otros ordenadores\Mi PC\Documents\Proyectos\SSP Traductores II\SSP-Traductores-de-Lenguajes-II\MiniAnalizadorLexico\obj\Debug\net8.0\MiniAnalizadorLexico.pdb
+G:\Otros ordenadores\Mi PC\Documents\Proyectos\SSP Traductores II\SSP-Traductores-de-Lenguajes-II\MiniAnalizadorLexico\obj\Debug\net8.0\MiniAnalizadorLexico.genruntimeconfig.cache
+G:\Otros ordenadores\Mi PC\Documents\Proyectos\SSP Traductores II\SSP-Traductores-de-Lenguajes-II\MiniAnalizadorLexico\obj\Debug\net8.0\ref\MiniAnalizadorLexico.dll
+C:\Users\Robert Cruz\Documents\Proyectos\SSP Traductores II\SSP-Traductores-de-Lenguajes-II\MiniAnalizadorLexico\bin\Debug\net8.0\MiniAnalizadorLexico.exe
+C:\Users\Robert Cruz\Documents\Proyectos\SSP Traductores II\SSP-Traductores-de-Lenguajes-II\MiniAnalizadorLexico\bin\Debug\net8.0\MiniAnalizadorLexico.deps.json
+C:\Users\Robert Cruz\Documents\Proyectos\SSP Traductores II\SSP-Traductores-de-Lenguajes-II\MiniAnalizadorLexico\bin\Debug\net8.0\MiniAnalizadorLexico.runtimeconfig.json
+C:\Users\Robert Cruz\Documents\Proyectos\SSP Traductores II\SSP-Traductores-de-Lenguajes-II\MiniAnalizadorLexico\bin\Debug\net8.0\MiniAnalizadorLexico.dll
+C:\Users\Robert Cruz\Documents\Proyectos\SSP Traductores II\SSP-Traductores-de-Lenguajes-II\MiniAnalizadorLexico\bin\Debug\net8.0\MiniAnalizadorLexico.pdb
+C:\Users\Robert Cruz\Documents\Proyectos\SSP Traductores II\SSP-Traductores-de-Lenguajes-II\MiniAnalizadorLexico\obj\Debug\net8.0\MiniAnalizadorLexico.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Robert Cruz\Documents\Proyectos\SSP Traductores II\SSP-Traductores-de-Lenguajes-II\MiniAnalizadorLexico\obj\Debug\net8.0\MiniAnalizadorLexico.AssemblyInfoInputs.cache
+C:\Users\Robert Cruz\Documents\Proyectos\SSP Traductores II\SSP-Traductores-de-Lenguajes-II\MiniAnalizadorLexico\obj\Debug\net8.0\MiniAnalizadorLexico.AssemblyInfo.cs
+C:\Users\Robert Cruz\Documents\Proyectos\SSP Traductores II\SSP-Traductores-de-Lenguajes-II\MiniAnalizadorLexico\obj\Debug\net8.0\MiniAnalizadorLexico.csproj.CoreCompileInputs.cache
+C:\Users\Robert Cruz\Documents\Proyectos\SSP Traductores II\SSP-Traductores-de-Lenguajes-II\MiniAnalizadorLexico\obj\Debug\net8.0\MiniAnalizadorLexico.sourcelink.json
+C:\Users\Robert Cruz\Documents\Proyectos\SSP Traductores II\SSP-Traductores-de-Lenguajes-II\MiniAnalizadorLexico\obj\Debug\net8.0\MiniAnalizadorLexico.dll
+C:\Users\Robert Cruz\Documents\Proyectos\SSP Traductores II\SSP-Traductores-de-Lenguajes-II\MiniAnalizadorLexico\obj\Debug\net8.0\refint\MiniAnalizadorLexico.dll
+C:\Users\Robert Cruz\Documents\Proyectos\SSP Traductores II\SSP-Traductores-de-Lenguajes-II\MiniAnalizadorLexico\obj\Debug\net8.0\MiniAnalizadorLexico.pdb
+C:\Users\Robert Cruz\Documents\Proyectos\SSP Traductores II\SSP-Traductores-de-Lenguajes-II\MiniAnalizadorLexico\obj\Debug\net8.0\MiniAnalizadorLexico.genruntimeconfig.cache
+C:\Users\Robert Cruz\Documents\Proyectos\SSP Traductores II\SSP-Traductores-de-Lenguajes-II\MiniAnalizadorLexico\obj\Debug\net8.0\ref\MiniAnalizadorLexico.dll
+G:\Otros ordenadores\WhoopLapL13\Documents\Proyectos\SSP Traductores II\SSP-Traductores-de-Lenguajes-II\MiniAnalizadorLexico\obj\Debug\net8.0\MiniAnalizadorLexico.GeneratedMSBuildEditorConfig.editorconfig
+G:\Otros ordenadores\WhoopLapL13\Documents\Proyectos\SSP Traductores II\SSP-Traductores-de-Lenguajes-II\MiniAnalizadorLexico\obj\Debug\net8.0\MiniAnalizadorLexico.AssemblyInfoInputs.cache
+G:\Otros ordenadores\WhoopLapL13\Documents\Proyectos\SSP Traductores II\SSP-Traductores-de-Lenguajes-II\MiniAnalizadorLexico\obj\Debug\net8.0\MiniAnalizadorLexico.AssemblyInfo.cs
+G:\Otros ordenadores\WhoopLapL13\Documents\Proyectos\SSP Traductores II\SSP-Traductores-de-Lenguajes-II\MiniAnalizadorLexico\obj\Debug\net8.0\MiniAnalizadorLexico.csproj.CoreCompileInputs.cache
+G:\Otros ordenadores\WhoopLapL13\Documents\Proyectos\SSP Traductores II\SSP-Traductores-de-Lenguajes-II\MiniAnalizadorLexico\obj\Debug\net8.0\MiniAnalizadorLexico.sourcelink.json
+G:\Otros ordenadores\WhoopLapL13\Documents\Proyectos\SSP Traductores II\SSP-Traductores-de-Lenguajes-II\MiniAnalizadorLexico\obj\Debug\net8.0\MiniAnalizadorLexico.dll
+G:\Otros ordenadores\WhoopLapL13\Documents\Proyectos\SSP Traductores II\SSP-Traductores-de-Lenguajes-II\MiniAnalizadorLexico\obj\Debug\net8.0\refint\MiniAnalizadorLexico.dll
+G:\Otros ordenadores\WhoopLapL13\Documents\Proyectos\SSP Traductores II\SSP-Traductores-de-Lenguajes-II\MiniAnalizadorLexico\obj\Debug\net8.0\MiniAnalizadorLexico.pdb
+G:\Otros ordenadores\WhoopLapL13\Documents\Proyectos\SSP Traductores II\SSP-Traductores-de-Lenguajes-II\MiniAnalizadorLexico\bin\Debug\net8.0\MiniAnalizadorLexico.exe
+G:\Otros ordenadores\WhoopLapL13\Documents\Proyectos\SSP Traductores II\SSP-Traductores-de-Lenguajes-II\MiniAnalizadorLexico\bin\Debug\net8.0\MiniAnalizadorLexico.deps.json
+G:\Otros ordenadores\WhoopLapL13\Documents\Proyectos\SSP Traductores II\SSP-Traductores-de-Lenguajes-II\MiniAnalizadorLexico\bin\Debug\net8.0\MiniAnalizadorLexico.runtimeconfig.json
+G:\Otros ordenadores\WhoopLapL13\Documents\Proyectos\SSP Traductores II\SSP-Traductores-de-Lenguajes-II\MiniAnalizadorLexico\bin\Debug\net8.0\MiniAnalizadorLexico.dll
+G:\Otros ordenadores\WhoopLapL13\Documents\Proyectos\SSP Traductores II\SSP-Traductores-de-Lenguajes-II\MiniAnalizadorLexico\bin\Debug\net8.0\MiniAnalizadorLexico.pdb
+G:\Otros ordenadores\WhoopLapL13\Documents\Proyectos\SSP Traductores II\SSP-Traductores-de-Lenguajes-II\MiniAnalizadorLexico\obj\Debug\net8.0\MiniAnalizadorLexico.genruntimeconfig.cache
+G:\Otros ordenadores\WhoopLapL13\Documents\Proyectos\SSP Traductores II\SSP-Traductores-de-Lenguajes-II\MiniAnalizadorLexico\obj\Debug\net8.0\ref\MiniAnalizadorLexico.dll

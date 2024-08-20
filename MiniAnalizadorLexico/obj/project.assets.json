@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "G:\\Otros ordenadores\\Mi PC\\Documents\\Proyectos\\SSP Traductores II\\SSP-Traductores-de-Lenguajes-II\\MiniAnalizadorLexico\\MiniAnalizadorLexico.csproj",
+      "projectUniqueName": "G:\\Otros ordenadores\\WhoopLapL13\\Documents\\Proyectos\\SSP Traductores II\\SSP-Traductores-de-Lenguajes-II\\MiniAnalizadorLexico\\MiniAnalizadorLexico.csproj",
       "projectName": "MiniAnalizadorLexico",
-      "projectPath": "G:\\Otros ordenadores\\Mi PC\\Documents\\Proyectos\\SSP Traductores II\\SSP-Traductores-de-Lenguajes-II\\MiniAnalizadorLexico\\MiniAnalizadorLexico.csproj",
+      "projectPath": "G:\\Otros ordenadores\\WhoopLapL13\\Documents\\Proyectos\\SSP Traductores II\\SSP-Traductores-de-Lenguajes-II\\MiniAnalizadorLexico\\MiniAnalizadorLexico.csproj",
       "packagesPath": "C:\\Users\\Roberto Cruz\\.nuget\\packages\\",
-      "outputPath": "G:\\Otros ordenadores\\Mi PC\\Documents\\Proyectos\\SSP Traductores II\\SSP-Traductores-de-Lenguajes-II\\MiniAnalizadorLexico\\obj\\",
+      "outputPath": "G:\\Otros ordenadores\\WhoopLapL13\\Documents\\Proyectos\\SSP Traductores II\\SSP-Traductores-de-Lenguajes-II\\MiniAnalizadorLexico\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Roberto Cruz\\AppData\\Roaming\\NuGet\\NuGet.Config",
