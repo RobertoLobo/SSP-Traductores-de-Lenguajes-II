@@ -1,5 +1,4 @@
-﻿namespace MiniAnalizadorSintatico;
-public enum Estados{
+﻿public enum Estados{
     INICIO, DELIMITADOR, IDENTIFICADOR, ENTERO, PUNTO, FLOTANTE, OPERADOR, FIN
 }
 public enum Tokens{
@@ -7,7 +6,7 @@ public enum Tokens{
     PUNTOCOMA, COMA, PARENIZQ, PARENDER, LLAVIZQ, LLAVDER, ASIGNACION, CONDICION, MIENTRAS, RETORNA,
     CONDICIONSINO, FIN
 }
-public class Analizador{
+public class AnalizadorLexico{
     private bool esSalida;
     private string cadena;
     private string lexema;
@@ -30,7 +29,7 @@ public class Analizador{
     List<string> opSuma = new List<string>() { "+", "-" };
     List<string> opMul = new List<string>() { "*", "/" };
     List<string> opRel = new List<string>() { "==", "<", "<=", ">", ">=", "!="};
-    public Analizador(){
+    public AnalizadorLexico(){
         cadena = string.Empty;
         lexema = string.Empty;
         tokens = new List<string>();
