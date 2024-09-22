@@ -1,2 +1,2 @@
-# SSP Traductores de Lenguajes II
+# Analizador Sintático con Obejetos Elementos Pila
  
