@@ -1,177 +1,86 @@
 ﻿public class AnalizadorSintatico{
-    private string [] tokensEntrada;
-    private Stack<ElementoPila> estados;
-    private Queue<ElementoPila> tokens; 
-    public AnalizadorSintatico(string [] tokensEntrada){
+    private Token [] tokensEntrada;
+    private int fila, columna, accion;
+    private bool aceptacion;
+    AdminArchivos adminArchivos;
+    readonly int[][] reglasGramatica;
+    int [] idReglas = {3, 3}; // Identificador de NoTerminal E
+    int [] lonReglas = {3, 1}; // Total de Elementos por Regla E - id + E | id
+    private Stack<ElementoPila> pila;
+    private Queue<Token> tokens; 
+    public AnalizadorSintatico(Token [] tokensEntrada){
         this.tokensEntrada = tokensEntrada;
-        estados = new Stack<ElementoPila>();
-        tokens = new Queue<ElementoPila>();
-        estados.Push(new Estado(0));
+        pila = new Stack<ElementoPila>();
+        tokens = new Queue<Token>();
+        adminArchivos = new AdminArchivos();
+        adminArchivos.leerArchivo(@".\tablaLR_1.txt");
+        reglasGramatica = adminArchivos.dameReglas();
+    }
+    public void inicializarPila(){
+        pila.Clear();
+        pila.Push(new Terminal(new Token("$", (short)Simbolos.FIN).ToString()));
+        pila.Push(new Estado(0));
+        aceptacion = false;
+        //
     }
     public bool analizar(){
-        
+        inicializarPila();
         foreach (var token in tokensEntrada) {
-            tokens.Enqueue(new Terminal(token));
+            tokens.Enqueue(token);
         }
-        tokens.Enqueue(new Terminal("$")); // Añadir el fin de entrada
-
-        string siguienteToken;
-        while (tokens.Count > 0) {
-            siguienteToken = tokens.Dequeue().Imprime;
-            //Console.WriteLine("Estados: "+estados.ToString());
-            Console.WriteLine("Símbolos en la pila: " + string.Join(", ", estados.Select(e => e.Imprime)));
-            if (!analizarToken(siguienteToken)) {
-                Console.WriteLine("Error de sintaxis en el token: " + siguienteToken);
-                return false;
-            }
-        }
-        if (estados.Peek().Imprime == "2") {
-            Console.WriteLine("Análisis exitoso");
-            return true;
-        } else {
-            Console.WriteLine("Análisis falló");
-            return false;
-        }
-    }
-    
-    public bool analizarRecursivo(){
-        foreach (var token in tokensEntrada){
-            tokens.Enqueue(new Terminal(token)); 
-        }
-        tokens.Enqueue(new Terminal("$")); 
-
-        Terminal nextToken;
-        while (tokens.Count > 0){
-            nextToken = (Terminal)tokens.Dequeue();
-            Console.WriteLine("Símbolos en la pila: " + string.Join(", ", estados.Select(e => e.Imprime)));
-            Console.WriteLine("Token a Analizar: "+nextToken.Imprime);
-            if (!analizarTokenRecursivo(nextToken)){
-                Console.WriteLine("Error de sintaxis en el token: " + nextToken.Imprime);
-                return false;
-            }
-        }
-
-        // Verificar el estado final
-        if (((Estado)estados.Peek()).Imprime == "1"){
-            Console.WriteLine("Análisis recursivo exitoso.");
-            return true;
-        }else{
-            Console.WriteLine("Análisis falló.");
-            return false;
-        }
-    }
-    
-    private bool analizarToken(string token) {
-        while (true) {
-            Estado estadoActual = (Estado)estados.Peek();
-            switch (estadoActual.Imprime) {
-            case "0":
-                if (token == "<IDENTIFICADOR>") {
-                    // d2
-                    estados.Push(new Terminal("id"));
-                    estados.Push(new Estado(1));
+        tokens.Enqueue(new Token("$", (short)Simbolos.FIN)); // Añadir el fin de entrada
+        Token siguienteToken;
+        while (tokens.Count > 0 && !aceptacion) {
+            siguienteToken = tokens.Dequeue(); // siguente simbolo
+            fila = Convert.ToInt32(pila.Peek().Imprime); // Estado
+            columna = siguienteToken.tipo; // Tipo idToken
+            accion = reglasGramatica[fila][columna];
+            Console.WriteLine("Símbolos en la pila: " + string.Join(", ", pila.Select(e => e.Imprime)));
+            Console.WriteLine("Entrada: "+siguienteToken.simbolo);
+            Console.WriteLine("Acción: "+accion);
+            if(accion > 0){
+                //Desplazamiento
+                pila.Push(new Terminal(siguienteToken.simbolo));
+                pila.Push(new Estado(accion));
+                continue; // vuelve a analizar
+            }else if (accion < 0){
+                if(aceptacion = accion == -1){
+                    Console.WriteLine("Aceptación!");
+                    Console.WriteLine("Símbolos en la pila: " + string.Join(", ", pila.Select(e => e.Imprime)));
+                    /*
+                    pila.Pop();
+                    return pila.Pop(); // Retornar raíz de Arbol
+                    */
                     return true;
-                }
-                break;
+                }else{
+                    // Reducción
+                    int regla = Math.Abs(reglasGramatica[fila][columna])- 1;
+                    // sacar n * 2 elementos por regla
+                    for(int i = 0; i < lonReglas[regla-1]*2; i++){//
+                        pila.Pop();
+                    }
+                    Console.WriteLine("Reducción Regla: "+regla);
 
-            case "1":
-                if (token == "<OPSUMA>") {
-                    // d3
-                    estados.Push(new Terminal("+"));
-                    estados.Push(new Estado(3));
-                    return true;
+                    fila = Convert.ToInt32(pila.Peek().Imprime); // Estado
+                    columna = idReglas[regla-1]; // 3 E No terminal idToken
+                    accion = reglasGramatica[fila][columna];
+                    
+                    // Transición
+                    /*
+                    Nodo nodo = new Nodo(reduccion(regla))
+                    pila.Push(nodo);
+                    pila.Push(new Nodo(fila));
+                    */
+                    pila.Push(new NTerminal("E"));// Nodo
+                    pila.Push(new Estado(accion));
+                    tokens.Enqueue(new Token("$", (short)Simbolos.FIN)); // añado fin de cadena para continuar reduciendo
+                    Console.WriteLine("Símbolos en la pila: " + string.Join(", ", pila.Select(e => e.Imprime)));
+                    Console.WriteLine("Acción: "+accion);
+                    continue;
                 }
-                break;
-
-            case "3":
-                if (token == "<IDENTIFICADOR>") {
-                    // d4
-                    estados.Push(new Terminal("id"));
-                    estados.Push(new Estado(4));
-                    return true;
-                }
-                break;
-
-            case "4":
-                if (token == "$") { // Fin de entrada
-                    // r0 y acceptacion
-                    estados.Pop(); 
-                    estados.Pop(); 
-                    estados.Pop(); 
-                    estados.Pop(); 
-                    estados.Pop(); 
-                    estados.Push(new Estado(2)); 
-                    return true;
-                }
-                break;
+            }else break;
         }
-            return false;
-        }
-    }
-    private bool analizarTokenRecursivo(Terminal token){
-        while (true){
-            string estadoActual = estados.Peek().Imprime;
-            switch (estadoActual){
-                case "0":
-                    // Si el token es un identificador, hacer un shift a estado 2
-                    if (token.Imprime == "<IDENTIFICADOR>")
-                    {
-                        estados.Push(token);
-                        estados.Push(new Estado(2));
-                        
-                        return true;
-                    }
-                    break;
-
-                case "1": // r1 o aceptar
-                    // Si el token es el fin de entrada, aceptar
-                    if (token.Imprime == "$")
-                    {
-                        return true; // Aceptación después de reducción
-                    }
-                    break;
-
-                case "2":
-                    // Si el token es un operador de suma, hacer un shift a estado 3
-                    if (token.Imprime == "<OPSUMA>")
-                    {
-                        estados.Push(token);
-                        estados.Push(new Estado(3));
-                        
-                        return true;
-                    }
-                    else // Reducir E -> ID
-                    {
-                        estados.Pop(); // Sacar token
-                        estados.Pop(); // Sacar estado 2
-                        
-                        estados.Push(new Estado(1));
-                        return analizarTokenRecursivo(token); // Reevaluar el mismo token
-                    }
-
-                case "3":
-                    // Si el token es un identificador, hacer un shift a estado 2
-                    if (token.Imprime == "<IDENTIFICADOR>")
-                    {
-                        estados.Push(token); // Añadir el token
-                        estados.Push(new Estado(2)); // Cambiar a estado 2
-                        
-                        return true;
-                    }
-                    break;
-
-                case "4":
-                    // Si el token es el fin de entrada, reducir E -> ID + E
-                    if (token.Imprime == "$")
-                    {
-                        estados.Pop(); // Sacar token
-                        estados.Pop(); // Sacar estado 4
-                        estados.Push(new Estado(1)); // Cambiar a estado 1
-                        return analizarTokenRecursivo(token); // Reevaluar el token
-                    }
-                    break;
-            }
-            return false;
-        }
+        // Error
+        return false;
     }
 }

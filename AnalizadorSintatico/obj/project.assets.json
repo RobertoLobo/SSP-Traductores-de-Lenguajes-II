@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Robert Cruz\\Documents\\Proyectos\\SSP Traductores II\\AnalizadorSintatico\\AnalizadorSintatico.csproj",
+      "projectUniqueName": "C:\\Users\\Robert Cruz\\Documents\\Proyectos\\SSP Traductores II\\SSP-Traductores-de-Lenguajes-II\\AnalizadorSintatico\\AnalizadorSintatico.csproj",
       "projectName": "AnalizadorSintatico",
-      "projectPath": "C:\\Users\\Robert Cruz\\Documents\\Proyectos\\SSP Traductores II\\AnalizadorSintatico\\AnalizadorSintatico.csproj",
+      "projectPath": "C:\\Users\\Robert Cruz\\Documents\\Proyectos\\SSP Traductores II\\SSP-Traductores-de-Lenguajes-II\\AnalizadorSintatico\\AnalizadorSintatico.csproj",
       "packagesPath": "C:\\Users\\Robert Cruz\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Robert Cruz\\Documents\\Proyectos\\SSP Traductores II\\AnalizadorSintatico\\obj\\",
+      "outputPath": "C:\\Users\\Robert Cruz\\Documents\\Proyectos\\SSP Traductores II\\SSP-Traductores-de-Lenguajes-II\\AnalizadorSintatico\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Robert Cruz\\AppData\\Roaming\\NuGet\\NuGet.Config"

@@ -5,12 +5,15 @@ public enum Tokens{
     IDENTIFICADOR, ENTERO, REAL, CADENA, TIPO, OPSUMA, OPMUL, OPRELAC, OPOR, OPAND, OPNOT, OPIGUALDAD,
     PUNTOCOMA, COMA, PARENIZQ, PARENDER, LLAVIZQ, LLAVDER, ASIGNACION, CONDICION, MIENTRAS, RETORNA,
     CONDICIONSINO, FIN
+}// Simbolos
+public enum Simbolos{
+    IDENTIFICADOR, OPSUMA, FIN, NOTERMINAL
 }
 public class AnalizadorLexico{
     private bool esSalida;
     private string cadena;
     private string lexema;
-    private List<string> tokens;
+    private List<Token> tokens;
     private short token;
     private char caracter;
     private short estadoInicial;
@@ -32,7 +35,7 @@ public class AnalizadorLexico{
     public AnalizadorLexico(){
         cadena = string.Empty;
         lexema = string.Empty;
-        tokens = new List<string>();
+        tokens = new List<Token>();
         caracter = char.MinValue;
         estadoInicial = 0;
 
@@ -109,7 +112,7 @@ public class AnalizadorLexico{
                 default:
                 break;
             }
-            tokens.Add(dameToken(token));
+            tokens.Add(new Token(dameSimbolo(token), token));
             indexCadena++;
             estadoInicial = 0;
             Console.Write("Tokens: ");
@@ -186,91 +189,103 @@ public class AnalizadorLexico{
             return false;
             //return palablasClave.Exists(element => (sToken.ToLower()) == element);
         }
-        private bool esOperador(string lexema)
+    private bool esOperador(string lexema)
+    {
+        if (lexema.Length == 0)
         {
-            if (lexema.Length == 0)
-            {
-                return false;
-            }
-            else if (opLogicos.Exists(element => lexema == element))
-            {
-                token = (int)Tokens.OPAND; return true;
-            }
-            else if (opSuma.Exists(element => lexema == element))
-            {
-                token = (int)Tokens.OPSUMA; return true;
-            }
-            else if (opMul.Exists(element => lexema == element))
-            {
-                token = (int)Tokens.OPMUL; return true;
-            }
-            else if (opRel.Exists(element => lexema == element))
-            {
-                token = (int)Tokens.OPRELAC; return true;
-            }
-            else if (lexema.Contains("="))
-            {
-                token =(int)Tokens.ASIGNACION; return true;
-            }
-            else if (lexema.Contains("("))
-            {
-                token = (int)Tokens.PARENIZQ; return true;
-            }
-            else if (lexema.Contains(")"))
-            {
-                token = (int)Tokens.PARENDER; return true;
-            }
-            else if (lexema.Contains("{"))
-            {
-                token = (int)Tokens.LLAVIZQ; return true;
-            }
-            else if (lexema.Contains("}"))
-            {
-                token = (int)Tokens.LLAVDER; return true;
-            }
-            else
-            {
-                return false;
-            }
+            return false;
         }
+        else if (opLogicos.Exists(element => lexema == element))
+        {
+            token = (int)Tokens.OPAND; return true;
+        }
+        else if (opSuma.Exists(element => lexema == element))
+        {
+            token = (int)Simbolos.OPSUMA; return true;
+        }
+        else if (opMul.Exists(element => lexema == element))
+        {
+            token = (int)Tokens.OPMUL; return true;
+        }
+        else if (opRel.Exists(element => lexema == element))
+        {
+            token = (int)Tokens.OPRELAC; return true;
+        }
+        else if (lexema.Contains("="))
+        {
+            token =(int)Tokens.ASIGNACION; return true;
+        }
+        else if (lexema.Contains("("))
+        {
+            token = (int)Tokens.PARENIZQ; return true;
+        }
+        else if (lexema.Contains(")"))
+        {
+            token = (int)Tokens.PARENDER; return true;
+        }
+        else if (lexema.Contains("{"))
+        {
+            token = (int)Tokens.LLAVIZQ; return true;
+        }
+        else if (lexema.Contains("}"))
+        {
+            token = (int)Tokens.LLAVDER; return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
     private string dameToken(short numero)
-        {
-            string token = "";
-            switch(numero){
-                case (short)Tokens.IDENTIFICADOR: token = "<IDENTIFICADOR>"; break;
-                case (short)Tokens.ENTERO: token = "<ENTERO>"; break;
-                case (short)Tokens.REAL: token = "<REAL>"; break;
-                case (short)Tokens.CADENA: token = "<CADENA>"; break;
-                case (short)Tokens.TIPO: token = "<TIPO>"; break;
-                case (short)Tokens.OPSUMA: token = "<OPSUMA>"; break;
-                case (short)Tokens.OPMUL: token = "<OPMULTI>"; break;
-                case (short)Tokens.OPRELAC: token = "<OPRELAC>"; break;
-                case (short)Tokens.OPOR: token = "<OPOR>"; break;
-                case (short)Tokens.OPAND: token = "<OPLOGIC>"; break;
-                case (short)Tokens.OPNOT: token = "<OPNOT>"; break;
-                case (short)Tokens.OPIGUALDAD: token = "<OPIGUALDAD>"; break;
-                case (short)Tokens.PUNTOCOMA: token = "<PUNTOCOMA>"; break;
-                case (short)Tokens.COMA: token = "<COMA>"; break;
-                case (short)Tokens.PARENIZQ: token = "<PARENTECIZQ>"; break;
-                case (short)Tokens.PARENDER: token = "<PARENTECDER>"; break;
-                case (short)Tokens.LLAVIZQ: token = "<LLAVIZQ>"; break;
-                case (short)Tokens.LLAVDER: token = "<LLAVDER>"; break;
-                case (short)Tokens.ASIGNACION: token = "<ASIGNACION>"; break;
-                case (short)Tokens.CONDICION: token = "<CONDICION>"; break;
-                case (short)Tokens.MIENTRAS: token = "<MIENTRAS>"; break;
-                case (short)Tokens.RETORNA: token = "<REAL>"; break;
-                case (short)Tokens.CONDICIONSINO: token = "<REAL>"; break;
-                case (short)Tokens.FIN: token = "<$>"; break;
-                default: token = "<ERROR>"; break;
-            }
-            return token;
+    {
+        string token = "";
+        switch(numero){
+            case (short)Tokens.IDENTIFICADOR: token = "<IDENTIFICADOR>"; break;
+            case (short)Tokens.ENTERO: token = "<ENTERO>"; break;
+            case (short)Tokens.REAL: token = "<REAL>"; break;
+            case (short)Tokens.CADENA: token = "<CADENA>"; break;
+            case (short)Tokens.TIPO: token = "<TIPO>"; break;
+            case (short)Tokens.OPSUMA: token = "<OPSUMA>"; break;
+            case (short)Tokens.OPMUL: token = "<OPMULTI>"; break;
+            case (short)Tokens.OPRELAC: token = "<OPRELAC>"; break;
+            case (short)Tokens.OPOR: token = "<OPOR>"; break;
+            case (short)Tokens.OPAND: token = "<OPLOGIC>"; break;
+            case (short)Tokens.OPNOT: token = "<OPNOT>"; break;
+            case (short)Tokens.OPIGUALDAD: token = "<OPIGUALDAD>"; break;
+            case (short)Tokens.PUNTOCOMA: token = "<PUNTOCOMA>"; break;
+            case (short)Tokens.COMA: token = "<COMA>"; break;
+            case (short)Tokens.PARENIZQ: token = "<PARENTECIZQ>"; break;
+            case (short)Tokens.PARENDER: token = "<PARENTECDER>"; break;
+            case (short)Tokens.LLAVIZQ: token = "<LLAVIZQ>"; break;
+            case (short)Tokens.LLAVDER: token = "<LLAVDER>"; break;
+            case (short)Tokens.ASIGNACION: token = "<ASIGNACION>"; break;
+            case (short)Tokens.CONDICION: token = "<CONDICION>"; break;
+            case (short)Tokens.MIENTRAS: token = "<MIENTRAS>"; break;
+            case (short)Tokens.RETORNA: token = "<REAL>"; break;
+            case (short)Tokens.CONDICIONSINO: token = "<REAL>"; break;
+            case (short)Tokens.FIN: token = "<$>"; break;
+            default: token = "<ERROR>"; break;
         }
+        return token;
+    }
+        private string dameSimbolo(short numero)
+    {
+        string simbolo = "";
+        switch(numero){
+            case (short)Simbolos.IDENTIFICADOR: simbolo = "<IDENTIFICADOR>"; break;
+            case (short)Simbolos.OPSUMA: simbolo = "<OPSUMA>"; break;
+            case (short)Simbolos.FIN: simbolo = "<$>"; break;
+            case (short)Simbolos.NOTERMINAL: simbolo = "E"; break;
+            default: simbolo = "<ERROR>"; break;
+        }
+        return simbolo;
+    }
     public void imprimeTokens(){
-        foreach(string token in tokens)
-            Console.Write(token);
+        foreach(Token token in tokens)
+            Console.Write(token.ToString());
         Console.WriteLine();
     }
-    public string [] dameTokens(){
+    public Token [] dameTokens(){
         return tokens.ToArray();
     }
 }

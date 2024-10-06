@@ -1,5 +1,3 @@
-using System.Dynamic;
-
 public abstract class ElementoPila{
     public abstract string Imprime { get; }
     
