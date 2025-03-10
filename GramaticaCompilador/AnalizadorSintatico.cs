@@ -43,7 +43,7 @@ public class AnalizadorSintatico{
         tokens.Enqueue(new Token("$", (short)Tokens.FIN)); // Añadir el fin de entrada
         Token siguienteToken;
         while (tokens.Count > 0 && !aceptacion) {
-            siguienteToken = tokens.Dequeue(); // siguente simbolo
+            siguienteToken = tokens.Peek(); // siguente simbolo
             fila = Convert.ToInt32(pila.Peek().Imprime); // Estado
             columna = siguienteToken.tipo; // Tipo idToken
             accion = reglasGramatica[fila][columna];
@@ -52,6 +52,7 @@ public class AnalizadorSintatico{
             Console.WriteLine("Acción: "+accion);
             if(accion > 0){
                 //Desplazamiento
+                tokens.Dequeue(); 
                 pila.Push(new Terminal(siguienteToken.simbolo));
                 pila.Push(new Estado(accion));
                 continue; // vuelve a analizar
@@ -86,7 +87,7 @@ public class AnalizadorSintatico{
                     //pila.Push(new NTerminal("E"));// Nodo
                     pila.Push(reglasNTerminal[regla-1]);
                     pila.Push(new Estado(accion));
-                    tokens.Enqueue(new Token("$", (short)Tokens.FIN)); // añado fin de cadena para continuar reduciendo
+                    //tokens.Enqueue(new Token("$", (short)Tokens.FIN)); // añado fin de cadena para continuar reduciendo
                     Console.WriteLine("Símbolos en la pila: " + string.Join(", ", pila.Select(e => e.Imprime)));
                     Console.WriteLine("Acción: "+accion);
                     continue;

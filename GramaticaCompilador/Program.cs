@@ -1,5 +1,8 @@
-﻿internal class Program
+﻿using GramaticaCompilador;
+
+internal class Program
 {
+    public AdminArchivos adminArchivos;
     public AnalizadorLexico analizadorLex;
     public AnalizadorSintatico analizadorSin;
     public Program(){
@@ -23,10 +26,11 @@
             new Token(";", 12),
             new Token("}", 17),
         ];
-        //analizadorLex = new AnalizadorLexico();
-        //analizadorLex.inicio();
-        //analizadorSin = new AnalizadorSintatico(analizadorLex.dameTokens());
-        analizadorSin = new AnalizadorSintatico(tokens);
+        //adminArchivos.leerArchivo();
+        analizadorLex = new AnalizadorLexico();
+        analizadorLex.inicio();
+        analizadorSin = new AnalizadorSintatico(analizadorLex.dameTokens());
+        //analizadorSin = new AnalizadorSintatico(tokens);
         analizadorSin.analizar();
     }
 }

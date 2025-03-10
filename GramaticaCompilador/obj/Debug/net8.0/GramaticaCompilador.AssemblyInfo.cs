@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("GramaticaCompilador")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fb38b550da3501ced501741ef312ce20640d1cc1")]
 [assembly: System.Reflection.AssemblyProductAttribute("GramaticaCompilador")]
 [assembly: System.Reflection.AssemblyTitleAttribute("GramaticaCompilador")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

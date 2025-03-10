@@ -47,14 +47,20 @@ public class AnalizadorLexico{
                 lexema = string.Empty;
                 esSalida = false;
                 caracter = cadena[indexCadena];
-            while(!esSalida && indexCadena < cadena.Length-1){
+            while(!esSalida && indexCadena < cadena.Length){
                 
                 //cadena.Remove(cadena.Length-1);
                 Console.WriteLine("Leido: {0}", caracter);
-                if (caracter == ';' || caracter == ' ')
+                // Delimitador de Lexemas
+                if (caracter == ';' || caracter == ' '){ // Deja de leer carácteres para evaluar lexema
+                    if (estadoInicial == 0 && caracter == ';'){
+                        estadoInicial = (int)Estados.DELIMITADOR;
+                        indexCadena++;
+                    }
                     esSalida = true;
-                else{
+                }else{
                     estadoInicial = dameEstadoSiguiente(estadoInicial, caracter);
+                    Console.WriteLine("Estado Sig: {0}", estadoInicial);
                     switch (estadoInicial)
                     {
                         // Detener por delimitador
@@ -62,7 +68,7 @@ public class AnalizadorLexico{
                             esSalida = true;  break;
                         // Ignorar fin de linea
                         case (int)Estados.FIN:
-                            estadoInicial = 0;
+                            // estadoInicial = 0;
                             // Deja de leer
                             esSalida = true; break;
                         case -1: lexema = "Error"; esSalida = true; break;
@@ -73,6 +79,7 @@ public class AnalizadorLexico{
                     }
                 }
             }
+            Console.WriteLine("Estado: {0}", estadoInicial);
             switch (estadoInicial)
             {
                 // Ignorar
@@ -82,6 +89,9 @@ public class AnalizadorLexico{
                         token = (short)Tokens.PUNTOCOMA;
                     else if (caracter == ',')
                         token = (short)Tokens.COMA;
+                    else if (caracter == '$')
+                        token = (short)Tokens.FIN;
+                    caracter = ' ';
                 break;
                 // Verifica que el ID sea una palabra clave
                 case (int)Estados.IDENTIFICADOR:
@@ -91,26 +101,28 @@ public class AnalizadorLexico{
                         token = (int)Tokens.IDENTIFICADOR;
                 break;
                 case (int)Estados.ENTERO:
-                    if(esOperador(lexema)){}
-                        
-                    else
-                        token = (int)Tokens.TIPO;
+                    // Fija Token para Entero
+                        token = (int)Tokens.ENTERO;
                     break;
                 case (int)Estados.FLOTANTE:
-                    if(esOperador(lexema)){}
-                    
-                    else
-                    token = (int)Tokens.TIPO;
+                    token = (int)Tokens.REAL;
                 break;
                 // Identifica de que operador se trata
                 case (int)Estados.OPERADOR: 
-                    if(esOperador(lexema)){}
+                    //if(esOperador(lexema)){}
                 break;
-                default:
+                case (int)Estados.FIN: 
+                    token = (short)Tokens.FIN;
+                    caracter = ' ';
                 break;
+                // Estado Inválido
+                default: token = -1; break;
             }
             tokens.Add(new Token(dameToken(token), token));
-            indexCadena++;
+            Console.Write("Token: ", dameToken(token));
+            if (caracter == ' '){
+                indexCadena++;
+            }
             estadoInicial = 0;
             Console.Write("Tokens: ");
             imprimeTokens();
@@ -127,7 +139,7 @@ public class AnalizadorLexico{
                         return (int)Estados.IDENTIFICADOR;
                     else if (char.IsDigit(caracter))
                         return (short)Estados.ENTERO;
-                    else if (caracter == '+' || caracter == '-' || caracter == '*' || caracter == '&' || caracter == '|' || caracter == '=')
+                    else if (esOperador(caracter.ToString()))
                         return (short)Estados.OPERADOR;
                     else break;
                 // No debería haber estado delimitador 
@@ -162,7 +174,7 @@ public class AnalizadorLexico{
                     return (short)Estados.FIN;
                 break;
                 // Estado Inválido
-                default: return (short)Estados.INICIO - 1; break;
+                default: break;
             }
             // Si no cumple con ningun caso termina
             return (short)Estados.FIN;
@@ -179,7 +191,7 @@ public class AnalizadorLexico{
                     case "while": token = (int)Tokens.MIENTRAS; break;
                     case "return": token = (int)Tokens.RETORNA; break;
                     case "else": token = (int)Tokens.CONDICIONSINO; break;
-                    default: token += (int)Tokens.TIPO; break;
+                    default: token = (int)Tokens.TIPO; break;
                 }
                 return true;
             }
