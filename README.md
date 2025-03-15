@@ -21,7 +21,9 @@ En el siguiente programa de consola se emplea un analizador sintático que admit
 * **R8** <ListaVar> ::= , identificador <ListaVar> 
 * **R9** <DefFunc> ::= tipo identificador ( <Parametros> ) <BloqFunc> 
 
-Donde `tipo` `identificador` son símbolos *terminales* y `<programa>` es *no terminal* generador.
+Entre otros más...
+
+Donde `tipo` `identificador` son símbolos *terminales* y `<programa>` `<Definicion>` es *no terminal* generador.
 
 
 
@@ -31,10 +33,17 @@ Donde `tipo` `identificador` son símbolos *terminales* y `<programa>` es *no te
 
 
 ## Demo
+Ejemplo de Entrada:
+
+`void funcion ( int numero ) { float real; real = 3.14; } `
+
+Tokens identificados:
+
+`Token(4, <TIPO>) Token(0, <IDENTIFICADOR>) Token(14, <PARENTECIZQ>) Token(4, <TIPO>) Token(0, <IDENTIFICADOR>) Token(15, <PARENTECDER>) Token(16, <LLAVIZQ>) Token(4, <TIPO>) Token(0, <IDENTIFICADOR>) Token(12, <PUNTOCOMA>) Token(0, <IDENTIFICADOR>) Token(18, <ASIGNACION>) Token(2, <REAL>) Token(12, <PUNTOCOMA>) Token(17, <LLAVDER>) Token(23, <$>)`
 
 Salida de Consola
-![Salida](https://i.imgur.com/34x2qGg.png)
 
+![Salida](https://i.imgur.com/0Z12msm.png)
 
 ## Ejemplo de Codigo
 

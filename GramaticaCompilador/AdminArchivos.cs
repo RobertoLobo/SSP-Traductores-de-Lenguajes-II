@@ -1,10 +1,6 @@
-using System;
-
 namespace GramaticaCompilador;
-
 public class AdminArchivos
 {
-    //FileStream fs;
     List<string> lineas;
     List<ElementoPila> nTerminales;
     private string nombreArchivo;
@@ -17,8 +13,6 @@ public class AdminArchivos
         try
         {
             if(File.Exists(nombreArchivo)){
-                //fs = File.Create();
-                int cuentaLineas = 0;
                 lineas.Clear();
                 //FileStream file = new FileStream(nombreArchivo, FileMode.Open, FileAccess.Read); Binario
                 StreamReader reader = new StreamReader(nombreArchivo);

@@ -35,7 +35,6 @@ public class AnalizadorLexico{
         tokens = new List<Token>();
         caracter = char.MinValue;
         estadoInicial = 0;
-
     }
     public void inicio(){
         indexCadena = 0;
@@ -48,11 +47,8 @@ public class AnalizadorLexico{
                 esSalida = false;
                 caracter = cadena[indexCadena];
             while(!esSalida && indexCadena < cadena.Length){
-                
-                //cadena.Remove(cadena.Length-1);
-                Console.WriteLine("Leido: {0}", caracter);
                 // Delimitador de Lexemas
-                if (caracter == ';' || caracter == ' '){ // Deja de leer carácteres para evaluar lexema
+                if (caracter == ';' || caracter == ' '){
                     if (estadoInicial == 0 && caracter == ';'){
                         estadoInicial = (int)Estados.DELIMITADOR;
                         indexCadena++;
@@ -60,7 +56,6 @@ public class AnalizadorLexico{
                     esSalida = true;
                 }else{
                     estadoInicial = dameEstadoSiguiente(estadoInicial, caracter);
-                    Console.WriteLine("Estado Sig: {0}", estadoInicial);
                     switch (estadoInicial)
                     {
                         // Detener por delimitador
@@ -68,23 +63,20 @@ public class AnalizadorLexico{
                             esSalida = true;  break;
                         // Ignorar fin de linea
                         case (int)Estados.FIN:
-                            // estadoInicial = 0;
-                            // Deja de leer
                             esSalida = true; break;
                         case -1: lexema = "Error"; esSalida = true; break;
                         default: 
+                            // Continuar leyendo
                             lexema += caracter;
                             caracter = cadena[++indexCadena];
                         break;
                     }
                 }
             }
-            Console.WriteLine("Estado: {0}", estadoInicial);
+            // Identifica el tipo de lexema
             switch (estadoInicial)
             {
-                // Ignorar
                 case (int)Estados.DELIMITADOR:
-                // Identifica que tipo de delimitador
                     if (caracter == ';')
                         token = (short)Tokens.PUNTOCOMA;
                     else if (caracter == ',')
@@ -93,23 +85,18 @@ public class AnalizadorLexico{
                         token = (short)Tokens.FIN;
                     caracter = ' ';
                 break;
-                // Verifica que el ID sea una palabra clave
                 case (int)Estados.IDENTIFICADOR:
                     if (isKeyword(lexema)) { }
-                    //else if(esOperador(lexema)){}
                     else
                         token = (int)Tokens.IDENTIFICADOR;
                 break;
                 case (int)Estados.ENTERO:
-                    // Fija Token para Entero
                         token = (int)Tokens.ENTERO;
                     break;
                 case (int)Estados.FLOTANTE:
                     token = (int)Tokens.REAL;
                 break;
-                // Identifica de que operador se trata
                 case (int)Estados.OPERADOR: 
-                    //if(esOperador(lexema)){}
                 break;
                 case (int)Estados.FIN: 
                     token = (short)Tokens.FIN;
@@ -119,18 +106,16 @@ public class AnalizadorLexico{
                 default: token = -1; break;
             }
             tokens.Add(new Token(dameToken(token), token));
-            Console.Write("Token: ", dameToken(token));
             if (caracter == ' '){
                 indexCadena++;
             }
             estadoInicial = 0;
-            Console.Write("Tokens: ");
-            imprimeTokens();
-        }  
+        }
+        Console.Write("Tokens: ");
+        imprimeTokens();
     }
     private short dameEstadoSiguiente(short estadoInicial, char caracter)
         {
-            
             switch (estadoInicial)
             {
                 // INICIO -> LETRA o NUMERO
@@ -142,14 +127,12 @@ public class AnalizadorLexico{
                     else if (esOperador(caracter.ToString()))
                         return (short)Estados.OPERADOR;
                     else break;
-                // No debería haber estado delimitador 
                 case (int)Estados.DELIMITADOR:
                     if (caracter == ';' || caracter == ' ')
                         return (int)Estados.DELIMITADOR;
                     else if (caracter == '\r' || caracter == '\n' || caracter == '$')
                         return (int)Estados.DELIMITADOR;
                     else break;
-                //
                 case (int)Estados.IDENTIFICADOR:
                     if (char.IsLetter(caracter) || caracter == '_')
                         return (int)Estados.IDENTIFICADOR;

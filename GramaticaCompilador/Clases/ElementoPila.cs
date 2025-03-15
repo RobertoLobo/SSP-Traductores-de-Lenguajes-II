@@ -1,5 +1,3 @@
-using System.Dynamic;
-
 public abstract class ElementoPila{
     public abstract string Imprime { get; }
     
@@ -12,7 +10,6 @@ public class Terminal : ElementoPila{
     {
         this.simbolo = simbolo;
     }
-
     public override string Imprime => simbolo;
 }
 public class NTerminal : ElementoPila{
@@ -29,4 +26,3 @@ public class Estado : ElementoPila{
     }
     public override string Imprime => simbolo.ToString();
 }
-
