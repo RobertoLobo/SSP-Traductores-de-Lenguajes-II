@@ -1,10 +1,12 @@
 ﻿using GramaticaCompilador;
+using GramaticaCompilador.Clases;
 
 internal class Program
 {
     public AdminArchivos adminArchivos;
     public AnalizadorLexico analizadorLex;
     public AnalizadorSintatico analizadorSin;
+    public Semantico semantico;
     public Program(){
 
     }
@@ -18,5 +20,6 @@ internal class Program
         analizadorLex.inicio();
         analizadorSin = new AnalizadorSintatico(analizadorLex.dameTokens());
         analizadorSin.analizar();
+        semantico = new Semantico(analizadorSin.retornaRaiz());
     }
 }
