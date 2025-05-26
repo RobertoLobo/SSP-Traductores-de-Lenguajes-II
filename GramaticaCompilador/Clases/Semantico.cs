@@ -29,7 +29,7 @@ public class Semantico
     public void analiza(NTerminal arbol){
         //this.arbol = arbol;
         // Inicializar la tabla y errores
-        NTerminal.TablaSimbolos = new AdminTablaSimbolos();
+        NTerminal.adminTablaSimbolos = new AdminTablaSimbolos();
         try
         {
             // Ámbito global
@@ -42,7 +42,7 @@ public class Semantico
         }
 
         // Mostrar resultados
-        NTerminal.TablaSimbolos.Muestra();
+        NTerminal.adminTablaSimbolos.Muestra();
         if (listaErrores.Count > 0)
         {
             Console.WriteLine("=== Errores Semánticos ===");

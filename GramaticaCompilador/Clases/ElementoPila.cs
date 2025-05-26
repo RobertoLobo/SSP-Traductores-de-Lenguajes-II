@@ -30,7 +30,7 @@ public class NTerminal : ElementoPila{
     public List<ElementoPila> nodos {get;}
     // Elemenos para Semantico
     public char TipoDato { get; set; }
-    public static AdminTablaSimbolos TablaSimbolos { get; set; }
+    public static AdminTablaSimbolos adminTablaSimbolos { get; set; }
     public static string Ambito { get; set; } = "";
     public NTerminal(string simbolo){
         this.simbolo = simbolo;
@@ -77,7 +77,7 @@ public class NTerminal : ElementoPila{
             // registro
             try
             {
-                NTerminal.TablaSimbolos.AgregaVariable(Ambito, idNodo.Imprime, td);
+                NTerminal.adminTablaSimbolos.AgregaVariable(Ambito, idNodo.Imprime, td);
             }
             catch (SemanticException ex)
             {
@@ -100,7 +100,7 @@ public class NTerminal : ElementoPila{
                     .OfType<Terminal>()
                     .Select(t => DimeTipo(t.Imprime))
                     .Aggregate("", (a,b)=>a+b);
-                NTerminal.TablaSimbolos.EnterFunction(idNodo.Imprime, firma);
+                NTerminal.adminTablaSimbolos.EnterFunction(idNodo.Imprime, firma);
             }
             break;
 
@@ -113,7 +113,7 @@ public class NTerminal : ElementoPila{
                     char td = DimeTipo(tipoNodo.Imprime);
                     try
                     {
-                        NTerminal.TablaSimbolos.AgregaParametro(Ambito, idNodo.Imprime, td);
+                        NTerminal.adminTablaSimbolos.AgregaParametro(Ambito, idNodo.Imprime, td);
                     }
                     catch (SemanticException ex)
                     {
@@ -135,7 +135,7 @@ public class NTerminal : ElementoPila{
             {
                 // nodos: [ identificador, Expresion ]
                 var idNodo = nodos[0];
-                var sym = NTerminal.TablaSimbolos.Lookup(idNodo.Imprime);
+                var sym = NTerminal.adminTablaSimbolos.Lookup(idNodo.Imprime);
                 if (sym == null)
                     errores.Add($"Variable '{idNodo.Imprime}' no declarada");
                 else
@@ -155,7 +155,7 @@ public class NTerminal : ElementoPila{
             {
                 // nodos: [ identificador, Argumentos ]
                 var idNodo = nodos[0];
-                var sym = NTerminal.TablaSimbolos.Lookup(idNodo.Imprime);
+                var sym = NTerminal.adminTablaSimbolos.Lookup(idNodo.Imprime);
                 if (sym == null || !sym.IsFunction)
                     errores.Add($"Función '{idNodo.Imprime}' no definida");
                 else
@@ -192,7 +192,7 @@ public class NTerminal : ElementoPila{
                         TipoDato = s.Contains('.') ? 'f' : 'i';
                     else
                     {
-                        var sym = NTerminal.TablaSimbolos.Lookup(s);
+                        var sym = NTerminal.adminTablaSimbolos.Lookup(s);
                         TipoDato = sym?.Type ?? 'v';
                     }
                 }
