@@ -470,9 +470,9 @@ public class AnalizadorSintatico{
         }
         return nodo;
     }
-    public ElementoPila retornaRaiz(){
+    public NTerminal retornaRaiz(){
         pila.Pop();
-        return pila.Pop(); // Retornar raíz de Arbol
+        return (NTerminal)pila.Pop(); // Retornar raíz de Arbol
     }
 
 }

@@ -20,6 +20,7 @@ internal class Program
         analizadorLex.inicio();
         analizadorSin = new AnalizadorSintatico(analizadorLex.dameTokens());
         analizadorSin.analizar();
-        semantico = new Semantico(analizadorSin.retornaRaiz());
+        semantico = new Semantico();
+        semantico.analiza(analizadorSin.retornaRaiz());
     }
 }

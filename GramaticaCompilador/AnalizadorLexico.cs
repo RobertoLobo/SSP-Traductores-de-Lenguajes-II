@@ -47,8 +47,8 @@ public class AnalizadorLexico{
                 caracter = cadena[indexCadena];
             while(!esSalida && indexCadena < cadena.Length){
                 // Delimitador de Lexemas
-                if (caracter == ';' || caracter == ' '){
-                    if (estadoInicial == 0 && caracter == ';'){
+                if (caracter == ';' || caracter == ' ' || caracter == ','){
+                    if (estadoInicial == 0 && (caracter == ';' || caracter == ',')){
                         estadoInicial = (int)Estados.DELIMITADOR;
                         indexCadena++;
                     }
